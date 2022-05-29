@@ -85,3 +85,5 @@ C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodwor
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.csproj.CopyComplete
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.pdb
+C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.dll
+C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.xml
