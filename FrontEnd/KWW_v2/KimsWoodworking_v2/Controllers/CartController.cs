@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using KimsWoodworking_v2.Models;
 using KimsWoodworking_v2.Models.ViewModels;
-using static KimsWoodworking_v2.Repositories.ProductRepository;
+using static KimsWoodworking_v2.Repositories.CartRepository;
 
 namespace KimsWoodworking_v2.Controllers
 {
-    public class ProductController : Controller
+    public class CartController : Controller
     {
-        // GET: Product
+        // GET: Cart
+        [Authorize]
         public ActionResult Index()
         {
             try
             {
-                ProductIndexViewModel productIndexViewModel = new ProductIndexViewModel
+                UserCartViewModel UserCart = new UserCartViewModel
                 {
-                    ProductsList = GetAllActiveProducts()
+                    ProductsInCartList = GetUserCart()
                 };
-                return View(productIndexViewModel);
+
+                return View(UserCart);
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 //need to do some loging here
                 ViewBag.message = ex.Message + ex.StackTrace;
                 return View("Error");

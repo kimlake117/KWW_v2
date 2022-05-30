@@ -32,6 +32,7 @@ C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodwor
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\roslyn\VBCSCompiler.exe
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Antlr3.Runtime.dll
+C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\EntityFramework.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\EntityFramework.SqlServer.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Microsoft.AspNet.Identity.Core.dll
@@ -57,6 +58,7 @@ C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodwor
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\System.Web.WebPages.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\System.Web.WebPages.Razor.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\WebGrease.dll
+C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.xml
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Microsoft.Owin.xml
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Microsoft.Owin.Host.SystemWeb.xml
@@ -85,5 +87,3 @@ C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodwor
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.csproj.CopyComplete
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.dll
 C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\obj\Debug\KimsWoodworking_v2.pdb
-C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.dll
-C:\Users\Kim Lake\Documents\Job_Search_2022\KWW_v2.0\FrontEnd\KWW_v2\KimsWoodworking_v2\bin\Dapper.xml

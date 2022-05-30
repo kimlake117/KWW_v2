@@ -1,0 +1,49 @@
+﻿@model KimsWoodworking_v2.Models.ViewModels.UserCartViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Cart for @User.Identity.Name</h2>
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductPrice)
+        </th>
+    </tr>
+
+@foreach (var item in Model.ProductsInCartList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(Model => item.ProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(Model => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(Model => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(Model => item.ProductPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
