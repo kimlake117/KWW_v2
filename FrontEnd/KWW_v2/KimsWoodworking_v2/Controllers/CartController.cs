@@ -30,5 +30,26 @@ namespace KimsWoodworking_v2.Controllers
                 return View("Error");
             }
         }
+
+        public ActionResult AddProductToCart(int productID) {
+            try
+            {
+
+                AddProductToCartByID(productID);
+
+                UserCartViewModel UserCart = new UserCartViewModel
+                {
+                    ProductsInCartList = GetUserCart()
+                };
+
+                return View("Index",UserCart);
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
     }
 }

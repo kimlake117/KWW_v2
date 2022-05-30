@@ -33,6 +33,23 @@ namespace KimsWoodworking_v2
                     conn.Close();
                 }
             }
-        } 
+        }
+        //Takes a model in with the datayou want stored. Returns the number of rows affected.
+        public static int SaveData<T>(string sql, T data) {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GetConnectionString("KWWDB"))) { 
+                conn.Open();
+                try
+                {
+                    return conn.Execute(sql, data);
+                }
+                catch
+                {
+                    throw;
+                }
+                finally {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

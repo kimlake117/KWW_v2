@@ -22,5 +22,8 @@ namespace KimsWoodworking_v2.Models
 
         [Display(Name = "Active")]
         public bool Active { get; set; } = false;
+
+        [Display(Name = "Quantity")]
+        public int Quantity { get; set; } = 0;
     }
 }

@@ -22,6 +22,9 @@
         <th>
             @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductPrice)
         </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].Quantity)
+        </th>
     </tr>
 
 @foreach (var item in Model.ProductsInCartList) {
@@ -37,6 +40,9 @@
         </td>
         <td>
             @Html.DisplayFor(Model => item.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(Model => item.Quantity)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
