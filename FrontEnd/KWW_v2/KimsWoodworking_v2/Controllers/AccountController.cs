@@ -68,6 +68,9 @@ namespace KimsWoodworking_v2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (model.Email is null) { 
+                model.Email = "";
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -75,7 +78,7 @@ namespace KimsWoodworking_v2.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
