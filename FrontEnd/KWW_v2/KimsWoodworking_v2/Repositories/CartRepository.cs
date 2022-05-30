@@ -10,7 +10,7 @@ namespace KimsWoodworking_v2.Repositories
 {
     public static class CartRepository
     {
-        public static List<ProductModel> GetUserCart() {     
+        public static List<UserCartModel> GetUserCart() {     
             
             DynamicParameters p = new DynamicParameters();
 
@@ -18,16 +18,17 @@ namespace KimsWoodworking_v2.Repositories
 
             string sql = "exec [dbo].[GetUserCart] @UserID";
 
-            return DataAccess.LoadDataList<ProductModel>(sql,p);
+            return DataAccess.LoadDataList<UserCartModel>(sql,p);
         }
         public static int AddProductToCartByID(int productID)
         {
             if (!IsProductInCart(productID)) {
-                UserCartModel userCartItem = new UserCartModel();
-
-                userCartItem.ProductID = productID;
-                userCartItem.Quantity = 1;
-                userCartItem.UserID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+                UserCartModel userCartItem = new UserCartModel
+                {
+                    ProductID = productID,
+                    Quantity = 1,
+                    UserID = System.Web.HttpContext.Current.User.Identity.GetUserId()
+                };
 
                 string sql = "[dbo].[InsertProductIntoCart] @ProductID,@Quantity,@UserID";
 
@@ -40,9 +41,9 @@ namespace KimsWoodworking_v2.Repositories
         {
             bool result = false;
 
-            List<ProductModel> userCart = GetUserCart();
+            List<UserCartModel> userCart = GetUserCart();
 
-            foreach (ProductModel product in userCart)
+            foreach (UserCartModel product in userCart)
             {
                 if(product.ProductID == productID){
                     result = true;
@@ -62,6 +63,52 @@ namespace KimsWoodworking_v2.Repositories
             string sql = "[dbo].[DeleteFromCart] @ProductID, @UserID";
 
             return DataAccess.SaveData(sql, UserCartItem);
+        }
+
+        public static int UpdateCartItemQuantity(int productID, int newQuantity) {
+
+            if (newQuantity > 0)
+            {
+                UserCartModel UserCartItem = new UserCartModel
+                {
+                    ProductID = productID,
+                    Quantity = newQuantity,
+                    UserID = System.Web.HttpContext.Current.User.Identity.GetUserId()
+                };
+
+
+                string sql = "exec [dbo].[UpdateCartItem] @ProductID, @Quantity, @UserID";
+
+
+                return DataAccess.SaveData(sql, UserCartItem);
+            }
+            else {
+                UserCartModel UserCartItem = new UserCartModel
+                {
+                    ProductID = productID,
+                    Quantity = newQuantity,
+                    UserID = System.Web.HttpContext.Current.User.Identity.GetUserId()
+                };
+
+
+                string sql = "exec [dbo].[DeleteFromCart] @ProductID, @UserID";
+
+
+                return DataAccess.SaveData(sql, UserCartItem);
+            }
+        }
+
+        public static decimal GetCartTotalPrice() { 
+            decimal totalPrice = 0;
+
+            List<UserCartModel> userCart = GetUserCart();
+
+            foreach (var item in userCart) {
+                decimal itemTotal = item.ProductPrice * item.Quantity;
+                totalPrice += itemTotal;
+            }
+
+            return totalPrice;
         }
     } 
 }

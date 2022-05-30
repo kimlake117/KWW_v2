@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using KimsWoodworking_v2.Models.ViewModels;
 using static KimsWoodworking_v2.Repositories.CartRepository;
+using KimsWoodworking_v2.Models;
 
 namespace KimsWoodworking_v2.Controllers
 {
@@ -15,13 +16,10 @@ namespace KimsWoodworking_v2.Controllers
         public ActionResult Index()
         {
             try
-            {
-                UserCartViewModel UserCart = new UserCartViewModel
-                {
-                    ProductsInCartList = GetUserCart()
-                };
+            { 
+                ViewBag.TotalPrice = GetCartTotalPrice();
 
-                return View(UserCart);
+                return View(GetUserCart());
             }
             catch (Exception ex)
             {
@@ -37,12 +35,8 @@ namespace KimsWoodworking_v2.Controllers
 
                 AddProductToCartByID(productID);
 
-                UserCartViewModel UserCart = new UserCartViewModel
-                {
-                    ProductsInCartList = GetUserCart()
-                };
 
-                return View("Index",UserCart);
+                return Redirect("Index");
             }
             catch (Exception ex)
             {
@@ -52,11 +46,28 @@ namespace KimsWoodworking_v2.Controllers
             }
         }
 
-        public ActionResult Delete(int poductID) {
+        public ActionResult Delete(int productID) {
             try
             {
-                DeleteFromCart(poductID);
+                DeleteFromCart(productID);
 
+
+                return Redirect("Index");
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateCartItem(UserCartModel item) {
+            try
+            {
+                UpdateCartItemQuantity(item.ProductID, item.Quantity);
 
                 return Redirect("Index");
             }

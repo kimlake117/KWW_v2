@@ -1,53 +1,56 @@
-﻿@model KimsWoodworking_v2.Models.ViewModels.UserCartViewModel
+﻿@model IEnumerable<KimsWoodworking_v2.Models.UserCartModel>
 
 @{
     ViewBag.Title = "Index";
 }
-<br />
-<h2>Cart for @User.Identity.Name</h2>
-<br />
 
+<h2>Cart for @System.Web.HttpContext.Current.User.Identity.Name</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductID)
+            @Html.DisplayNameFor(model => model.First().ProductID)
         </th>
         <th>
-            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductName)
+            @Html.DisplayNameFor(model => model.First().ProductName)
         </th>
         <th>
-            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductDescription)
+            @Html.DisplayNameFor(model => model.First().ProductPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].ProductPrice)
+            @Html.DisplayNameFor(model => model.First().Quantity)
         </th>
-        <th>
-            @Html.DisplayNameFor(Model => Model.ProductsInCartList[0].Quantity)
-        </th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model.ProductsInCartList) {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(Model => item.ProductID)
+            @Html.DisplayFor(model => item.ProductID)
         </td>
         <td>
-            @Html.DisplayFor(Model => item.ProductName)
+            @Html.DisplayFor(model => item.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(Model => item.ProductDescription)
+            @Html.DisplayFor(model => item.ProductPrice)
         </td>
         <td>
-            @Html.DisplayFor(Model => item.ProductPrice)
+            @using (Html.BeginForm("UpdateCartItem", "Cart", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => item.ProductID)
+                @Html.EditorFor(model => item.Quantity)
+
+                <button type="submit">Update</button>
+
+                @Html.ValidationMessageFor(model => item.Quantity, "", new { @class = "text-danger" })
+            }
         </td>
         <td>
-            @Html.DisplayFor(Model => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { poductID = item.ProductID })
+            @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID })
         </td>
     </tr>
 }
-
 </table>
+
+<p>Total: $@ViewBag.TotalPrice</p>
