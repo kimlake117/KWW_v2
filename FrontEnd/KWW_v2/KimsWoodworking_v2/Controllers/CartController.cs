@@ -51,5 +51,21 @@ namespace KimsWoodworking_v2.Controllers
                 return View("Error");
             }
         }
+
+        public ActionResult Delete(int poductID) {
+            try
+            {
+                DeleteFromCart(poductID);
+
+
+                return Redirect("Index");
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
     }
 }

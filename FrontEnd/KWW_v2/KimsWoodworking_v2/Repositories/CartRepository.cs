@@ -51,5 +51,17 @@ namespace KimsWoodworking_v2.Repositories
 
             return result;
         }
+
+        public static int DeleteFromCart(int productID) {
+            UserCartModel UserCartItem = new UserCartModel
+            {
+                ProductID = productID,
+                UserID = System.Web.HttpContext.Current.User.Identity.GetUserId()
+            };
+
+            string sql = "[dbo].[DeleteFromCart] @ProductID, @UserID";
+
+            return DataAccess.SaveData(sql, UserCartItem);
+        }
     } 
 }
