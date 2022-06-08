@@ -1,0 +1,53 @@
+﻿@model KimsWoodworking_v2.Models.ViewModels.EditProductViewModel
+
+@{
+    ViewBag.Title = "ChooseProduct";
+}
+<br />
+<h2>Choose a product to edit</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsList[0].ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsList[0].ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsList[0].ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsList[0].ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsList[0].Active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ProductsList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditProduct", new { ProductID = item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>

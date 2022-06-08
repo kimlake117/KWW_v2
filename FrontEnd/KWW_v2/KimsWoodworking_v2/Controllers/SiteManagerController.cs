@@ -4,22 +4,38 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KimsWoodworking_v2.Models.ViewModels;
-using static KimsWoodworking_v2.Repositories.CartRepository;
 using KimsWoodworking_v2.Models;
+using static KimsWoodworking_v2.Repositories.ProductRepository;
 
 namespace KimsWoodworking_v2.Controllers
 {
-    [Authorize]
-    public class CartController : Controller
+    [Authorize(Roles = "Manager")]
+    public class SiteManagerController : Controller
     {
-        // GET: Cart
+        private List<ProductModel> products = GetAllProducts();
+
+        // GET: SiteManager
         public ActionResult Index()
         {
             try
-            { 
-                ViewBag.TotalPrice = Math.Round(GetCartTotalPrice(),2);
+            {
+                return View();
+            }
+            catch(Exception ex) {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
 
-                return View(GetUserCart());
+        public ActionResult ChooseProduct() {
+            try
+            {
+                EditProductViewModel viewModel = new EditProductViewModel()
+                {
+                    ProductsList = products
+                };
+                return View(viewModel);
             }
             catch (Exception ex)
             {
@@ -29,30 +45,16 @@ namespace KimsWoodworking_v2.Controllers
             }
         }
 
-        public ActionResult AddProductToCart(int productID) {
+        public ActionResult EditProduct(int ProductID)
+        {
             try
             {
+                EditProductViewModel vm = new EditProductViewModel
+                {
+                    ProductToEdit = products.First(x => x.ProductID == ProductID)
+                };
 
-                AddProductToCartByID(productID);
-
-
-                return Redirect("Index");
-            }
-            catch (Exception ex)
-            {
-                //need to do some loging here
-                ViewBag.message = ex.Message + ex.StackTrace;
-                return View("Error");
-            }
-        }
-
-        public ActionResult Delete(int productID) {
-            try
-            {
-                DeleteFromCart(productID);
-
-
-                return Redirect("Index");
+                return View(vm);
             }
             catch (Exception ex)
             {
@@ -64,12 +66,16 @@ namespace KimsWoodworking_v2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateCartItem(UserCartModel item) {
+        public ActionResult EditProduct(EditProductViewModel vm)
+        {
             try
             {
-                UpdateCartItemQuantity(item.ProductID, item.Quantity);
+                UpdateProduct(vm);
 
-                return Redirect("Index");
+                //refresh products list with updated data 
+                products = GetAllProducts();
+
+                return Redirect("ChooseProduct");
             }
             catch (Exception ex)
             {
@@ -78,5 +84,5 @@ namespace KimsWoodworking_v2.Controllers
                 return View("Error");
             }
         }
-    }
+    }  
 }

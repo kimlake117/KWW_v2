@@ -9,8 +9,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Product")">Products</a>
                 </li>
-                
-                   
+                @if (System.Web.HttpContext.Current.User.IsInRole("Manager"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="@Url.Action("Index","SiteManager")">Site Manager</a>
+                    </li>
+                }
+                @if (System.Web.HttpContext.Current.User.IsInRole("Administrator"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Admin")">Admin</a>
+                    </li>
+                }
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 @Html.Partial("_LoginPartial")

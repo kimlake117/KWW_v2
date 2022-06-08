@@ -1,0 +1,63 @@
+﻿@model KimsWoodworking_v2.Models.ViewModels.EditProductViewModel
+
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>EditProduct</h2>
+
+<div>
+    <h4>ProductModel</h4>
+    <hr />
+
+@using (Html.BeginForm("EditProduct", "SiteManager", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductToEdit.ProductID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductToEdit.ProductID)
+            @Html.HiddenFor(model => model.ProductToEdit.ProductID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductToEdit.ProductName)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.ProductToEdit.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductToEdit.ProductPrice)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.ProductToEdit.ProductPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductToEdit.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.ProductToEdit.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductToEdit.Active)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.ProductToEdit.Active)
+        </dd>
+    </dl>
+    <input type="submit" value="submit" />
+}
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ChooseProduct")
+</p>
