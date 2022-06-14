@@ -1,0 +1,126 @@
+﻿@model KimsWoodworking_v2.Models.ViewModels.CheckOutViewModel
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<h2>CheckOut</h2>
+<p>Cart Total: $@ViewBag.TotalPrice</p>
+
+    @using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <h3> Billing Info</h3>
+            <table>
+                <tr>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingFirstName, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingLastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingLastName, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingStreet, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingStreet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingStreet, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingCity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingCity, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingState, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingState, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingState, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.BillingPostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.BillingPostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BillingPostalCode, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.CCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.CCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CCardNumber, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.CCMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.CCMonth, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CCMonth, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.CCYear, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.CCYear, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CCYear, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.CVC, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
+                    </td>
+                </tr>     
+            </table>
+            <h3>Shipping Info</h3>
+            <table>
+                <tr>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingFirstName, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingLastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingLastName, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingStreet, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingStreet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingStreet, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingCity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingCity, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingState, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingState, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingState, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-4">
+                        @Html.LabelFor(model => model.ShippingPostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.ShippingPostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShippingPostalCode, "", new { @class = "text-danger" })
+                    </td>
+                </tr> 
+            </table>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit Order" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+<br />
+<div>
+    <input class="btn btn-danger" type="button" value="Back to Cart" onclick="location.href='@Url.Action("Index", "Cart")'" />
+</div>

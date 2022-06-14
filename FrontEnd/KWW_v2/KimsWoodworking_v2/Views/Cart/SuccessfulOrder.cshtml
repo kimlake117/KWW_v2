@@ -1,0 +1,12 @@
+﻿@model KimsWoodworking_v2.Models.ViewModels.SuccessfulOrderViewModel
+@{
+    ViewBag.Title = "SuccessfulOrder";
+}
+
+<h2>Thank you @System.Web.HttpContext.Current.User.Identity.Name for your order!</h2>
+<br />
+
+<p>Order Id: @Model.ParentOrderID</p>
+<br />
+<p>Order Total: $@Math.Round(Model.TotalOrderCost,2)</p>
+

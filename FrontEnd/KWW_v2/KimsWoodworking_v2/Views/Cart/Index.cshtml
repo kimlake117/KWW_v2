@@ -41,7 +41,7 @@
                 @Html.HiddenFor(model => item.ProductID)
                 @Html.EditorFor(model => item.Quantity)
 
-                <button type="submit">Update</button>
+                <button type="submit" class="btn-sm">Update</button>
 
                 @Html.ValidationMessageFor(model => item.Quantity, "", new { @class = "text-danger" })
             }
@@ -56,8 +56,8 @@
 <p>Total: $@ViewBag.TotalPrice</p>
 
 
-<input class="btn-primary" type="button" value="Check Out" onclick="location.href='@Url.Action("ConfirmCart", "Cart")'" />
-<input class="btn-primary" type="button" value="Back to Browse" onclick="location.href='@Url.Action("Index", "Product")'" />
+<input class="btn btn-success" type="button" value="Check Out" onclick="location.href='@Url.Action("ConfirmCart", "Cart")'" />
+<input class="btn btn-danger" type="button" value="Back to Browse" onclick="location.href='@Url.Action("Index", "Product")'" />
 
 
 <p class="text-danger">@ViewBag.NoItemsInCartMessage</p>

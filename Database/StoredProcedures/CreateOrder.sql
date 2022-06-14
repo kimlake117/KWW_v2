@@ -19,7 +19,6 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 alter PROCEDURE [dbo].[CreateOrder]
-	--the user checking out
 	@UserID nvarchar(128),
 	@BillingFirstName varchar(128),
 	@BillingLastName varchar(128),

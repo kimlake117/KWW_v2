@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using KimsWoodworking_v2.Models.ViewModels;
 using static KimsWoodworking_v2.Repositories.CartRepository;
+using static KimsWoodworking_v2.Repositories.OrderRepository;
 using KimsWoodworking_v2.Models;
 
 namespace KimsWoodworking_v2.Controllers
@@ -12,8 +13,8 @@ namespace KimsWoodworking_v2.Controllers
     [Authorize]
     public class CartController : Controller
     {
-        private List<UserCartModel> UserCart = GetUserCart();
-        private Decimal TotalCartPrice = Math.Round(GetCartTotalPrice(), 2);
+        private readonly List<UserCartModel> UserCart = GetUserCart();
+        private readonly Decimal TotalCartPrice = Math.Round(GetCartTotalPrice(), 2);
         // GET: Cart
         public ActionResult Index()
         {
@@ -110,6 +111,7 @@ namespace KimsWoodworking_v2.Controllers
         public ActionResult CheckOut() {
             try
             {
+                ViewBag.TotalPrice = TotalCartPrice;
                 return View();
             }
             catch (Exception ex)
@@ -125,7 +127,9 @@ namespace KimsWoodworking_v2.Controllers
         public ActionResult CheckOut(CheckOutViewModel vm) {
             try
             {
-                return View();
+                SuccessfulOrderViewModel successfulOrderViewModel = CreateOrder(vm);
+
+                return View("SuccessfulOrder", successfulOrderViewModel);
             }
             catch (Exception ex)
             {
