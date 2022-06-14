@@ -12,14 +12,15 @@ namespace KimsWoodworking_v2.Controllers
     [Authorize]
     public class CartController : Controller
     {
+        private List<UserCartModel> UserCart = GetUserCart();
         // GET: Cart
         public ActionResult Index()
         {
             try
-            { 
-                ViewBag.TotalPrice = Math.Round(GetCartTotalPrice(),2);
+            {
+                ViewBag.TotalPrice = Math.Round(GetCartTotalPrice(), 2);
 
-                return View(GetUserCart());
+                return View(UserCart);
             }
             catch (Exception ex)
             {
@@ -70,6 +71,47 @@ namespace KimsWoodworking_v2.Controllers
                 UpdateCartItemQuantity(item.ProductID, item.Quantity);
 
                 return Redirect("Index");
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
+
+        public ActionResult ConfirmCart() {
+            try
+            {
+                return View(UserCart);
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
+
+        public ActionResult CheckOut() {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                //need to do some loging here
+                ViewBag.message = ex.Message + ex.StackTrace;
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckOut(CheckOutViewModel vm) {
+            try
+            {
+                return View();
             }
             catch (Exception ex)
             {

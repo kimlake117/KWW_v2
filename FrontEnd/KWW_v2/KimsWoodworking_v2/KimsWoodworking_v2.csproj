@@ -184,6 +184,7 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserCartModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\ViewModels\CheckOutViewModel.cs" />
     <Compile Include="Models\ViewModels\EditProductViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +272,7 @@
     <Content Include="Views\SiteManager\Index.cshtml" />
     <Content Include="Views\SiteManager\ChooseProduct.cshtml" />
     <Content Include="Views\SiteManager\EditProduct.cshtml" />
+    <Content Include="Views\Cart\ConfirmCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

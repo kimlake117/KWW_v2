@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KimsWoodworking_v2.Models.UserCartModel>
+
+@{
+    ViewBag.Title = "ConfirmCart";
+}
+<br />
+<h2>Please confirm the items in your cart.</h2>
+<br />
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>@Html.ActionLink("Continue to billing","CheckOut")</p>
