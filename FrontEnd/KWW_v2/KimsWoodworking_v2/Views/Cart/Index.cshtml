@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<br />
 <h2>Cart for @System.Web.HttpContext.Current.User.Identity.Name</h2>
-
+<br />
 <table class="table">
     <tr>
         <th>
@@ -54,3 +54,10 @@
 </table>
 
 <p>Total: $@ViewBag.TotalPrice</p>
+
+
+<input class="btn-primary" type="button" value="Check Out" onclick="location.href='@Url.Action("ConfirmCart", "Cart")'" />
+<input class="btn-primary" type="button" value="Back to Browse" onclick="location.href='@Url.Action("Index", "Product")'" />
+
+
+<p class="text-danger">@ViewBag.NoItemsInCartMessage</p>

@@ -42,5 +42,7 @@
 }
 
 </table>
+<p>Total: $@ViewBag.TotalPrice</p>
 
-<p>@Html.ActionLink("Continue to billing","CheckOut")</p>
+<input class="btn-primary" type="button" value="Continue" onclick="location.href='@Url.Action("CheckOut", "Cart")'" />
+<input class="btn-primary" type="button" value="Back to Cart" onclick="location.href='@Url.Action("Index", "Cart")'" />

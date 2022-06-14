@@ -13,12 +13,18 @@ namespace KimsWoodworking_v2.Controllers
     public class CartController : Controller
     {
         private List<UserCartModel> UserCart = GetUserCart();
+        private Decimal TotalCartPrice = Math.Round(GetCartTotalPrice(), 2);
         // GET: Cart
         public ActionResult Index()
         {
             try
             {
-                ViewBag.TotalPrice = Math.Round(GetCartTotalPrice(), 2);
+                if (TotalCartPrice == 0) {
+                    ViewBag.TotalPrice = "0.00";
+                }
+                else {
+                    ViewBag.TotalPrice = TotalCartPrice;
+                }
 
                 return View(UserCart);
             }
@@ -83,7 +89,15 @@ namespace KimsWoodworking_v2.Controllers
         public ActionResult ConfirmCart() {
             try
             {
-                return View(UserCart);
+                if (UserCart.Count < 1) {
+                    ViewBag.NoItemsInCartMessage = "No Items in cart.";
+                    ViewBag.TotalPrice = "0.00";
+                    return View("Index",UserCart);
+                }
+                else {
+                    ViewBag.TotalPrice = TotalCartPrice;
+                    return View(UserCart); 
+                }
             }
             catch (Exception ex)
             {
